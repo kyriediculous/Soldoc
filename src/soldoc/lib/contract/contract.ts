@@ -1,8 +1,8 @@
 export class Contract {
   public lines: string[];
   public pos: number;
-  public offsets: object
-  constructor(text: string | string[] ) {
+  public offsets: object;
+  constructor(text: string | string[]) {
     if (Array.isArray(text)) {
       this.lines = text;
     } else {
@@ -76,7 +76,7 @@ export class Contract {
     return this.lines[pos];
   }
 
-  getOriginalLineAt(pos:number): string {
+  getOriginalLineAt(pos: number): string {
     return this.lines[pos + this.offset(pos)];
   }
 
@@ -88,8 +88,9 @@ export class Contract {
     let offsetAmount = 0;
     for (let offset in this.offsets) {
       if (this.offsets.hasOwnProperty(offset)) {
-        // if (line >= offset)
-        offsetAmount += this.offsets[offset];
+        if (line >= offset) {
+          offsetAmount += this.offsets[offset];
+        }
       }
     }
     return offsetAmount;

@@ -30,6 +30,7 @@ class CommentsGenerator {
             }
             case contract_parts_1.default.FUNCTION: {
                 item.params = this.extractParamNames(item);
+                item.return = this.extractReturns(item);
                 return this.generateComment(this.getFunctionTemplate(), item);
             }
             default: {
@@ -58,9 +59,18 @@ class CommentsGenerator {
     extractParamNames(item) {
         let params = [];
         item.parameters.parameters.forEach((paramObj) => {
-            params.push({ name: paramObj.name });
+            params.push({ type: paramObj.typeName.name, name: paramObj.name });
         });
         return params;
+    }
+    extractReturns(item) {
+        let returns = [];
+        if (!item.returnParameters)
+            return [];
+        item.returnParameters.parameters.forEach(paramObj => {
+            returns.push({ type: paramObj.typeName.name, name: paramObj.name });
+        });
+        return returns;
     }
 }
 exports.default = CommentsGenerator;

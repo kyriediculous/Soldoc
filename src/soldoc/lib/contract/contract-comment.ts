@@ -1,4 +1,4 @@
-import {pad} from '../utils/string-utils';
+import { pad } from '../utils/string-utils';
 import CommentsGenerator from '../generators/comments-generator';
 import { Contract } from './contract';
 
@@ -39,7 +39,7 @@ export class ContractComment {
         let comment: string;
         comment = this.contract.getLineAt(oldCommentPosition).trim();
         if (comment.startsWith(parameterCommentRegex)) {
-          oldCommentsParams.push({line: oldCommentPosition, value: comment});
+          oldCommentsParams.push({ line: oldCommentPosition, value: comment });
         } else if (comment.startsWith('//')) {
           // comment.match returns string OR null, we can filter the 'null' values with '!' after the property that can be null
           oldCommentsMap[comment.match(generatedCommentRegex)![0]] = comment;
@@ -54,10 +54,10 @@ export class ContractComment {
       }
       // extract new comments
       let newCommentsParams: any[] = [];
-      let newCommentsMap = commentLines.reduce(function(map, obj) {
+      let newCommentsMap = commentLines.reduce(function (map, obj) {
         let key = obj.match(generatedCommentRegex)[0];
         if (key === parameterCommentRegex) {
-          newCommentsParams.push(obj);
+          newCommentsParams.push(obj.trim());
         } else map[key] = obj;
         return map;
       }, {});
@@ -74,8 +74,8 @@ export class ContractComment {
           this.contract.removeLine(firstCommentLine);
           // save old right part of comment
           let c = oldComment.value.toString().trim().split(' ');
-          if (c.length > 3) {
-            savedComments[c[2]] = c.slice(3).join(' ');
+          if (c.length > 4) {
+            savedComments[c[2]] = c.slice(4).join(' ');
           }
         }
         // insert new params comments

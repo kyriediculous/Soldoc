@@ -1,23 +1,23 @@
 import * as parser from 'solidity-parser-antlr';
-import {ContractFile} from './lib/contract/contract-file';
-import {Contract} from './lib/contract/contract';
+import { ContractFile } from './lib/contract/contract-file';
+import { Contract } from './lib/contract/contract';
 import ContractParts from './lib/contract-parts';
-import {ContractComment} from './lib/contract/contract-comment';
+import { ContractComment } from './lib/contract/contract-comment';
 
-export function generateCommentsFromText(text, config = {}) {
-  return generate(new Contract(text), config);
+export function generateCommentsFromText(text) {
+  return generate(new Contract(text));
 }
 
-export function generateCommentsFromFile(path, config = {}) {
+export function generateCommentsFromFile(path) {
   let contract = new ContractFile(path);
-  generate(contract, config);
+  generate(contract);
   contract.save();
 }
 
-function generate(contract: Contract, config) {
+function generate(contract: Contract) {
   let ast = parser.parse(
     contract.getText(),
-    {tolerant: true, loc: true, range: true}
+    { tolerant: true, loc: true, range: true }
   );
   const contractComment = new ContractComment(contract);
   const visitors = getVisitors(contractComment);
@@ -25,11 +25,11 @@ function generate(contract: Contract, config) {
   return contract.getText();
 }
 
-function getVisitors(contractComment) {
+function getVisitors(contractComment: ContractComment) {
   let visitors = {};
   for (let prop in ContractParts) {
     if (ContractParts.hasOwnProperty(prop)) {
-      visitors[ContractParts[prop]] = function(node) {
+      visitors[ContractParts[prop]] = function (node) {
         contractComment.insertComment(node);
       };
     }

@@ -10,16 +10,14 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:extension.helloWorld"
+		"onCommand:extension.soldoc"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
-		"commands": [
-			{
-				"command": "extension.helloWorld",
-				"title": "Hello World"
-			}
-		]
+		"commands": [{
+			"command": "extension.soldoc",
+			"title": "Solidity Documentation"
+		}]
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
