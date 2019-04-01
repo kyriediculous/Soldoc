@@ -1,112 +1,17 @@
-pragma solidity >=0.4.21 <0.6.0;
+pragma solidity ^0.5.1;
 
-/// @title Migrations
+
+/// @title BugsBunny
+/// @author 
 /// @notice
 /// @dev
-contract Migrations {
-  /// @notice
-  address public owner;
-  /// @notice
-  uint public last_completed_migration;
+contract BugsBunny {
 
-
-  /// @notice
-  /// @dev
-  constructor() public {
-    owner = msg.sender;
-  }
-
-  /// @dev
-  modifier restricted() {
-    if (msg.sender == owner) _;
-  }
-
-
-  /// @notice
-  /// @dev
-  /// @param completed (uint)
-  function setCompleted(uint completed) public restricted {
-    last_completed_migration = completed;
-  }
-  
-
-  
-  /// @notice
-  /// @dev
-  /// @param new_address (address)
-  function upgrade(address new_address) public restricted {
-    Migrations upgraded = Migrations(new_address);
-    upgraded.setCompleted(last_completed_migration);
-  }
-
-
-  /// @notice
-  /// @dev
-  /// @param me (string) Hello Wooooooooooorld
-  /// @param boolie (bool) Hello Woooooooooooooorld
-  /// @return me (string) Hello world  
-  /// @return boolie (bool) Hello World
-  function returnMe(string me, bool boolie) public pure returns (string me, bool boolie) {
-  }
+    /// @notice
+    /// @dev
+    /// @param food (string)
+    /// @return  (bool)
+    function doesEat(string calldata food) external pure returns (bool) {
+        return keccak256(bytes(food)) == keccak256("carrot");
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
