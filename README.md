@@ -3,7 +3,7 @@
 SolDoc is a library to easily generate comments in your solidity smart contracts based on the function parameters and return types. 
 It follows the official [ethereum natspec](https://github.com/ethereum/wiki/wiki/Ethereum-Natural-Specification-Format). 
 
-Example: 
+Generated example: 
 
 ```
 pragma solidity ^0.5.1;
