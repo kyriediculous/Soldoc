@@ -1,65 +1,44 @@
-# soldoc README
+# SolDoc - Generate Solidity Comments
 
-This is the README for your extension "soldoc". After writing up a brief description, we recommend including the following sections.
+SolDoc is a library to easily generate comments in your solidity smart contracts based on the function parameters and return types. 
+It follows the official [ethereum natspec](https://github.com/ethereum/wiki/wiki/Ethereum-Natural-Specification-Format). 
 
-## Features
+Example: 
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+```
+pragma solidity ^0.5.1;
 
-For example if there is an image subfolder under your extension project workspace:
 
-\!\[feature X\]\(images/feature-x.png\)
+/// @title BugsBunny
+/// @author 
+/// @notice
+/// @dev
+contract BugsBunny {
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+    /// @notice
+    /// @dev
+    /// @param food (string)
+    /// @return yesno (bool)
+    function doesEat(string calldata food) external pure returns (bool yesno) {
+        return keccak256(bytes(food)) == keccak256("carrot");
+    }
+}
+```
 
-## Requirements
+## Library 
+The `soldoc` module can be used as a standalone typescript library (TODO: write declaration files)
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+## Installation 
+As an extension: ... url 
 
-## Extension Settings
+As a library : 
+`git clone` & `npm install` 
+```
+import { generateCommentsFromFile } from '../soldoc/index';
+import * as path from 'path';
+const file = path.resolve(__dirname, './bugsbunny.sol')
+generateCommentsFromFile(file)
+```
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
------------------------------------------------------------------------------------------------------------
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
 
 **Enjoy!**
