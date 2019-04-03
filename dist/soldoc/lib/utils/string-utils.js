@@ -16,3 +16,4 @@ function pad(amount, text, tab = false) {
     return padText(text, amount, tab);
 }
 exports.pad = pad;
+//# sourceMappingURL=string-utils.js.map

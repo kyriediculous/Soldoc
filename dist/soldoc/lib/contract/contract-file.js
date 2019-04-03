@@ -34,3 +34,4 @@ class ContractFile extends contract_1.Contract {
     }
 }
 exports.ContractFile = ContractFile;
+//# sourceMappingURL=contract-file.js.map

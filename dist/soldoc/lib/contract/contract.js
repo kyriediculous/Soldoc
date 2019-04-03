@@ -80,3 +80,4 @@ class Contract {
     }
 }
 exports.Contract = Contract;
+//# sourceMappingURL=contract.js.map

@@ -9,3 +9,4 @@ const ContractParts = Object.freeze({
     FUNCTION: 'FunctionDefinition',
 });
 exports.default = ContractParts;
+//# sourceMappingURL=contract-parts.js.map
