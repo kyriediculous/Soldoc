@@ -3,6 +3,7 @@
 	"displayName": "soldoc",
 	"description": "Solidity documentation generator",
 	"version": "0.0.1",
+	"publisher": "NicoVergauwen",
 	"engines": {
 		"vscode": "^1.32.0"
 	},
@@ -14,12 +15,10 @@
 	],
 	"main": "./out/extension.js",
 	"contributes": {
-		"commands": [
-			{
-				"command": "extension.soldoc",
-				"title": "Solidity Documentation"
-			}
-		]
+		"commands": [{
+			"command": "extension.soldoc",
+			"title": "Solidity Documentation"
+		}]
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
